@@ -11,7 +11,6 @@ const auth = () => {
   const [password, setPassword] = useState("");
 
   const [variant, setVariant] = useState("login");
-  const router = useRouter();
 
   const toggleVariant = useCallback(() => {
     setVariant((currentVariant) =>
@@ -24,15 +23,14 @@ const auth = () => {
       await signIn("credentials", {
         email,
         password,
-        redirect: false,
-        callbackUrl: "/",
+        callbackUrl: "/profiles",
       });
 
-      router.push("/");
+      // router.push("/profiles");
     } catch (error) {
       console.log(error);
     }
-  }, [email, password, router]);
+  }, [email, password]);
 
   const register = useCallback(async () => {
     try {
